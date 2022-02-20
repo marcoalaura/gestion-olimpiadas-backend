@@ -1,0 +1,292 @@
+// swagger config
+export const SWAGGER_API_ROOT = 'api/docs';
+export const SWAGGER_API_NAME = 'Proyecto Olimipiadas Científicas';
+export const SWAGGER_API_DESCRIPTION =
+  'Documentación de Olimpiadas Científicas - MINEDU';
+export const SWAGGER_API_CURRENT_VERSION = '1.0';
+
+// response messages
+export const SUCCESS_DEFAULT = 'ok';
+export const SUCCESS_LIST = 'Registro(s) obtenido(s) con exito!';
+export const SUCCESS_CREATE = 'Registro creado con exito!';
+export const SUCCESS_UPDATE = 'Registro actualizado con exito!';
+export const SUCCESS_DELETE = 'Registro eliminado con exito!';
+
+export const Color = [
+  '#e2d810',
+  '#d9138a',
+  '#12a4d9',
+  '#322e2f',
+  '#ef9d10',
+  '#3b4d61',
+  '#6b7b8c',
+  '#1e3d59',
+  '#f5f0e1',
+  '#ff6e40',
+  '#ffc13b',
+  '#408ec6',
+  '#7a2048',
+  '#1e2761',
+  '#1d3c45',
+];
+
+export const Opciones = [
+  'a',
+  'b',
+  'c',
+  'd',
+  'e',
+  'f',
+  'g',
+  'h',
+  'i',
+  'j',
+  // 'k',
+  // 'l',
+  // 'm',
+  // 'n',
+  // 'o',
+  // 'p',
+  // 'q',
+  // 'r',
+  // 's',
+  // 't',
+  // 'u',
+  // 'v',
+  // 'w',
+  // 'x',
+  // 'y',
+  // 'z',
+];
+
+export const OpcionesFalsoVerdadero = ['FALSO', 'VERDADERO'];
+
+export const MAX_CARACTERES_TEXTO_PREGUNTA = 1000;
+export const MAX_CARACTERES_OPCIONES = 200;
+export const MIN_CANTIDAD_OPCIONES = 3;
+export const MIN_CANTIDAD_RESPUESTAS_SIMPLE = 1;
+export const MIN_CANTIDAD_RESPUESTAS_MULTIPLE = 2;
+export const CABECERAS_OFFLINE = {
+  id_estudiante_examen_detalle: 'c1',
+  id_estudiante_examen: 'c2',
+  id_pregunta: 'c3',
+  rude: 'c4',
+  respuestas: 'c5',
+  fecha_respuesta: 'c6',
+  fecha_inicio: 'c7',
+  fecha_fin: 'c8',
+  fecha_conclusion: 'c9',
+};
+export enum Rol {
+  ADMINISTRADOR = 'ADMINISTRADOR',
+  ESTUDIANTE = 'ESTUDIANTE',
+  COMITE_DOCENTE_CARGA = 'COMITE_DOCENTE_CARGA',
+  COMITE_DEPARTAMENTAL = 'COMITE_DEPARTAMENTAL',
+  COMITE_DOCENTE_VERIFICADOR = 'COMITE_DOCENTE_VERIFICADOR',
+  DIRECTOR = 'DIRECTOR',
+  CONSULTA = 'CONSULTA',
+  SUPER_ADMIN = 'SUPER_ADMIN',
+  TECNICO_SIE_DEPARTAMENTAL = 'TECNICO_SIE_DEPARTAMENTAL',
+  TECNICO_SIE_DISTRITO = 'TECNICO_SIE_DISTRITO',
+}
+
+export enum Status {
+  CREATE = 'CREADO',
+  ACTIVE = 'ACTIVO',
+  INACTIVE = 'INACTIVO',
+  PENDING = 'PENDIENTE',
+  CLOSED = 'CERRADO',
+  ENVIADO = 'ENVIADO',
+  APROBADO = 'APROBADO',
+  OBSERVADO = 'OBSERVADO',
+  ELIMINADO = 'ELIMINADO',
+  ANULADO = 'ANULADO',
+  IMPORTADO = 'IMPORTADO',
+  EN_PROCESO = 'EN_PROCESO',
+  FINALIZADO = 'FINALIZADO',
+  FINALIZADO_ERROR = 'FINALIZADO_ERROR',
+  TIMEOUT = 'TIMEOUT',
+  FINALIZADO_INVALIDO = 'FINALIZADO_INVALIDO',
+  TIMEOUT_INVALIDO = 'TIMEOUT_INVALIDO',
+  REPROGRAMADO = 'REPROGRAMADO',
+  REPROGRAMADO_REZAGADO = 'REPROGRAMADO_REZAGADO',
+  ASIGNADO = 'ASIGNADO',
+  CONFIGURACION_GRADOS = 'CONFIGURACION_GRADOS',
+  CONFIGURACION_COMPETENCIA = 'CONFIGURACION_COMPETENCIA',
+  SORTEO_PREGUNTAS = 'SORTEO_PREGUNTAS',
+  DESCARGA_EMPAQUETADOS = 'DESCARGA_EMPAQUETADOS',
+  EXAMEN_SEGUN_CRONOGRAMA = 'EXAMEN_SEGUN_CRONOGRAMA',
+  HABILITACION_REZAGADOS = 'HABILITACION_REZAGADOS',
+  SORTEO_PREGUNTAS_REZAGADOS = 'SORTEO_PREGUNTAS_REZAGADOS',
+  DESARROLLO_PRUEBAS_REZAGADOS = 'DESARROLLO_PRUEBAS_REZAGADOS',
+  CIERRE_PRUEBA_REZAGADOS = 'CIERRE_PRUEBA_REZAGADOS',
+  CALIFICACION_PROCESO = 'CALIFICACION_PROCESO',
+  CALIFICACION_ERROR = 'CALIFICACION_ERROR',
+  CALIFICACION = 'CALIFICACION',
+  PUBLICACION_RESPUESTAS = 'PUBLICACION_RESPUESTAS',
+  IMPUGNACION_PREGUNTAS_RESPUESTAS = 'IMPUGNACION_PREGUNTAS_RESPUESTAS',
+  OBTENCION_MEDALLERO = 'OBTENCION_MEDALLERO',
+  OBTENCION_MEDALLERO_PROCESO = 'OBTENCION_MEDALLERO_PROCESO',
+  OBTENCION_MEDALLERO_ERROR = 'OBTENCION_MEDALLERO_ERROR',
+  DESEMPATE = 'DESEMPATE',
+  GENERAR_CLASIFICADOS = 'GENERAR_CLASIFICADOS',
+  CLASIFICACION_PROCESO = 'CLASIFICACION_PROCESO',
+  CLASIFICACION_ERROR = 'CLASIFICACI0N_ERROR',
+  PUBLICACION_RESULTADOS = 'PUBLICACION_RESULTADOS',
+  HABILITADO = 'HABILITADO',
+  INHABILITADO = 'INHABILITADO',
+  INSCRITO = 'INSCRITO',
+}
+
+export enum Transition {
+  CREAR = 'crear',
+  ENVIAR = 'enviar',
+  APROBAR = 'aprobar',
+  OBSERVAR = 'observar',
+  ELIMINAR = 'eliminar',
+  ANULAR = 'anular',
+}
+
+export enum TransitionEtapa {
+  ACTIVAR = 'activar',
+  CONFIGURAR_GRADOS = 'grados',
+  CONFIGURAR_COMPETENCIA = 'competencia',
+  SORTEAR_PREGUNTAS = 'sortear',
+  DESCARGAR_EMPAQUETADOS = 'descargar',
+  DESARROLLAR_EXAMEN = 'desarrollar',
+  HABILITAR_REZAGADOS = 'habilitar',
+  SORTEAR_PREGUNTAS_REZAGADOS = 'sortearrezagados',
+  DESARROLLAR_EXAMEN_REZAGADOS = 'desarrollarrezagados',
+  CERRAR_PRUEBA_REZAGADOS = 'cerrarrezagados',
+  PUBLICAR_RESPUESTAS = 'respuestas',
+  IMPUGNAR_PREGUNTAS_RESPUESTAS = 'impugnar',
+  OBTENER_MEDALLERO = 'medallero',
+  DESEMPATAR = 'desempatar',
+  CLASIFICAR = 'clasificar',
+  PUBLICAR_RESULTADOS = 'publicar',
+  CERRAR = 'cerrar',
+}
+
+export enum Order {
+  ASC = 'ASC',
+  DESC = 'DESC',
+}
+
+export enum Configurations {
+  SCORE_PASSWORD = 3,
+  SALT_ROUNDS = 10,
+  WRONG_LOGIN_LIMIT = 3,
+  MINUTES_LOGIN_LOCK = 15,
+}
+
+// tipo de etapa
+export enum tiposEtapa {
+  DISTRITAL = 'DISTRITAL',
+  DEPARTAMENTAL = 'DEPARTAMENTAL',
+  NACIONAL = 'NACIONAL',
+}
+
+// tipo de pregunta
+export enum TipoPregunta {
+  OLIMPIADA = 'OLIMPIADA',
+  CURRICULA = 'CURRICULA',
+}
+
+// tipo respuesta de una pregunta
+export enum TipoRespuesta {
+  SELECCION_MULTIPLE = 'SELECCION_MULTIPLE',
+  SELECCION_SIMPLE = 'SELECCION_SIMPLE',
+  FALSO_VERDADERO = 'FALSO_VERDADERO',
+}
+
+// opciones
+
+// nivel de dificultad de una pregunta
+export enum NivelDificultad {
+  ALTA = 'COMPLEJA',
+  MEDIA = 'INTERMEDIA',
+  BAJA = 'BASICA',
+}
+
+// tipo prueba de un examen
+export enum TipoPrueba {
+  ONLINE = 'ONLINE',
+  OFFLINE = 'OFFLINE',
+}
+
+export enum TipoPlanificacion {
+  CRONOGRAMA = 'CRONOGRAMA',
+  REZAGADO = 'REZAGADO',
+}
+
+export enum tiposUnidadesEducativas {
+  FISCAL = 'FISCAL',
+  CONVENIO = 'CONVENIO',
+  PRIVADA = 'PRIVADA',
+}
+
+export enum tiposAreasGeograficas {
+  RURAL = 'RURAL',
+  URBANO = 'URBANO',
+}
+
+// grupos roles
+export enum grupoRol {
+  USUARIO = 'USUARIO',
+  ACTOR = 'ACTOR',
+  ESTUDIANTE = 'ESTUDIANTE',
+}
+
+export const TotalPuntaje = 100;
+export const OfflineMimeType = ['text/csv', 'application/vnd.ms-excel'];
+export const MIN_NUMERO_PREGUNTAS = 1;
+export const MAX_NUMERO_PREGUNTAS = 1000;
+export const MIN_TIEMPO_PRUEBA = 1; // minutos
+export const MAX_TIEMPO_PRUEBA = 10080; // minutos (1 semana)
+
+export const ArrayMaquinaEstados = [
+  Status.ACTIVE,
+  Status.CONFIGURACION_GRADOS,
+  Status.CONFIGURACION_COMPETENCIA,
+  Status.SORTEO_PREGUNTAS,
+  Status.DESCARGA_EMPAQUETADOS,
+  Status.EXAMEN_SEGUN_CRONOGRAMA,
+  Status.HABILITACION_REZAGADOS,
+  Status.SORTEO_PREGUNTAS_REZAGADOS,
+  Status.DESARROLLO_PRUEBAS_REZAGADOS,
+  Status.CIERRE_PRUEBA_REZAGADOS,
+  Status.PUBLICACION_RESPUESTAS,
+  Status.IMPUGNACION_PREGUNTAS_RESPUESTAS,
+  Status.OBTENCION_MEDALLERO,
+  Status.DESEMPATE,
+  Status.GENERAR_CLASIFICADOS,
+  Status.PUBLICACION_RESULTADOS,
+  Status.CLOSED,
+];
+
+export const EtapaDescripcion = {
+  ACTIVO: 'ACTIVO',
+  CONFIGURACION_GRADOS: 'CONFIGURACIÓN DE GRADOS',
+  CONFIGURACION_COMPETENCIA: 'CONFIGURACIÓN DE COMPETENCIA',
+  SORTEO_PREGUNTAS: 'SORTEO DE PREGUNTAS',
+  DESCARGA_EMPAQUETADOS: 'DESCARGA DE EMPAQUETADOS',
+  EXAMEN_SEGUN_CRONOGRAMA: 'EXÁMEN SEGÚN CRONOGRAMA',
+  HABILITACION_REZAGADOS: 'HABILITACIÓN DE REZAGADOS',
+  SORTEO_PREGUNTAS_REZAGADOS: 'SORTEO DE PREGUNTAS (REZAGADOS)',
+  DESARROLLO_PRUEBAS_REZAGADOS: 'DESARROLLO DE PRUEBAS (REZAGADOS)',
+  CIERRE_PRUEBA_REZAGADOS: 'CIERRE DE PRUEBA (REZAGADOS)',
+  PUBLICACION_RESPUESTAS: 'PUBLICACIÓN DE RESPUESTAS',
+  IMPUGNACION_PREGUNTAS_RESPUESTAS: 'IMPUGNACIÓN DE PREGUNTAS Y RESPUESTAS',
+  OBTENCION_MEDALLERO: 'OBTENCIÓN DE MEDALLERO',
+  DESEMPATE: 'DESEMPATE',
+  GENERAR_CLASIFICADOS: 'GENERAR CLASIFICADOS',
+  PUBLICACION_RESULTADOS: 'PUBLICACIÓN DE RESULTADOS',
+  CERRADO: 'CERRADO',
+};
+
+export const RUTA_IMAGENES = './src/templates/img';
+export const RUTA_LOGO_MINISTERIO =
+  './src/templates/imagen-ministerio/logoMinisterio.png';
+export const RUTA_REPORTES = '/tmp/reportes-olimpiadas';
+
+export const MAX_SIZE_LOGO = 700000;

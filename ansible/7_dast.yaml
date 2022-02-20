@@ -1,0 +1,9 @@
+--- # ejecucion de procesos SAST
+- hosts: localhost
+  become: yes
+  become_user: gitlab-runner
+  tasks:
+  - name: Ejecutar OWASP_ZAP
+    import_role:
+      name: security
+      tasks_from: owasp_zap

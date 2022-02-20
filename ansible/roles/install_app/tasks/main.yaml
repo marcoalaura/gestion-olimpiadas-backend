@@ -1,0 +1,7 @@
+--- # Construir una app en Debian 10 - Buster
+- name: Configurar repositorios NPM locales
+  shell: npm set registry https://registry.upat.agetic.gob.bo/
+
+- name: Instalar las dependencias con npm
+  shell: cd {{ projectPath }} &&  npm ci
+

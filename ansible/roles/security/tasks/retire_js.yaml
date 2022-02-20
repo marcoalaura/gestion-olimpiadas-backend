@@ -1,0 +1,18 @@
+- name: verificar instalacion de paquete
+  npm:
+    name: retire
+    global: yes
+    state: present
+
+- name: Establecer variables de configuracion
+  include_vars:
+    file: /opt/vars/configfile.json
+    name: confvars
+
+- name: Ejecutar escaneo de aplicacion con RetireJS
+  shell: retire --colors -v --severity critical --outputformat json --outputpath scan-retire-{{ projectCommitSha }}.json
+  args:
+    chdir: '{{ projectPath }}'
+
+- name: Enviar resultado de escaneo Retire
+  shell: 'curl --insecure +vX POST {{ confvars.RETIREJS_ELK_ENDPOINT }} -d @{{ projectPath }}/scan-retire-{{ projectCommitSha }}.json -H "app_name: retire-{{ projectName }}" -H "version_app:$CI_COMMIT_SHORT_SHA"'

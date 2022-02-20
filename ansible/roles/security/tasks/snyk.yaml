@@ -1,0 +1,28 @@
+- name: verificar instalacion de paquetes
+  npm:
+    name: snyk
+    global: yes
+    state: present
+
+- name: Establecer variables de configuracion
+  include_vars:
+    file: /opt/vars/configfile.json
+    name: confvars
+
+- name: autenticacion con llave snyk
+  shell: snyk auth {{ confvars.SNYK_KEY }}
+
+- name: ejecutar escaneo de aplicacion con snyk
+  shell: snyk test --quiet --json-file-output=scan-snyk-{{ projectCommitSha }}.json ||  true
+  args:
+    chdir: '{{ projectPath }}'
+
+- name: almacenar resultado de escaneo
+  include_vars:
+    file: '{{ projectPath }}/scan-snyk-{{ projectCommitSha }}.json'
+    name: snyk_result
+
+- name: enviar reporte de escaneo snyk
+  shell: 'curl --insecure +vX POST {{ confvars.SNYK_ELK_ENDPOINT }} -d @{{ projectPath }}/scan-snyk-{{ projectCommitSha }}.json -H "app_name: snyk-{{ projectName }}" -H "version_app:$CI_COMMIT_SHORT_SHA"'
+
+

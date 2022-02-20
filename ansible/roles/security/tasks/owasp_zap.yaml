@@ -1,0 +1,17 @@
+- name: Verificar existencia de imagen docker
+  docker_image:
+    name: owasp/zap2docker-stable
+
+- name: Establecer variables de configuracion
+  include_vars:
+    file: /opt/vars/configfile.json
+    name: confvars
+
+- name: ejecutar escaner owasp zap
+  shell: docker run -v $(pwd)/out:/zap/wrk/:rw \
+          -t owasp/zap2docker-stable zap-api-scan.py \
+          -t {{ confvars.APP_DOMAIN }} \
+          -J scan-owaspzap-{{ projectCommitSha }}.json  || true
+
+- name: Enviar resultado de escaneo OWASP
+  shell: 'curl --insecure +vX POST {{ confvars.OWASPZAP_ENDPOINT }} -d @{{ projectPath }}/scan-owaspzap-{{ projectCommitSha }}.json -H "app_name: retire-{{ projectName }}" -H "version_app:$CI_COMMIT_SHORT_SHA"'

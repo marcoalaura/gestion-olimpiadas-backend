@@ -1,0 +1,10 @@
+--- # Configuración del archivo hosts en servidor Debian 10 Buster
+- hosts: localhost
+  become: yes
+  become_user: root
+
+  tasks:
+  - name: Configurar permisos de host
+    import_role:
+      name: deploy_app
+      tasks_from: set_permissions.yaml

@@ -1,0 +1,14 @@
+- name: Crear y guardar el artefacto comprimido de la app
+  shell: |
+    cd  {{ projectPath }} && \
+    sudo cp /opt/vars/.env .env && \
+    echo 'CI_COMMIT_REF_NAME={{ projectCommitBranch }}' >> .env && \
+    echo 'CI_COMMIT_SHORT_SHA={{ projectCommitSha }}' >> .env && \
+    echo 'CI_COMMIT_MESSAGE="{{ projectCommitMessage }}"' >> .env && \
+    npm run build && \
+    mkdir ./dist/node_modules
+    cp -R node_modules/* ./dist/node_modules/ && \
+    cp .env ./dist/.env && \
+    mv dist  {{ projectName }} && \
+    tar -zcf '{{ projectName }}-{{ projectCommitSha }}.tar' '{{ projectName }}' &&
+    sudo cp  '{{ projectName }}-{{ projectCommitSha }}.tar' /opt/builds/'{{ projectName }}-{{ projectCommitSha }}.tar'

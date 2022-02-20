@@ -1,0 +1,19 @@
+{
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "src",
+  "monorepo": true,
+  "root": "",
+  "compilerOptions": {
+    "assets": [{ 
+      "include": "application/olimpiada/templates_carbon/*.*", 
+      "outDir": "dist/src"
+      }, {
+        "include": "templates/imagen-ministerio/*.*", 
+        "outDir": "dist/src"
+      }, {
+        "include": "templates/img/*.*", 
+        "outDir": "dist/src"
+      }],
+    "watchAssts": true
+  }
+}

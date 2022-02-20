@@ -1,0 +1,11 @@
+--- # Configuración del archivo hosts en servidor Debian 10 Buster
+- hosts: localhost
+  become: yes
+  become_user: root
+  roles:
+    - obtain_hosts
+  tasks:
+  - name: Obtener variables de configuración de hosts de cluster
+    import_role:
+      name: obtain_hosts
+      tasks_from: get_hosts

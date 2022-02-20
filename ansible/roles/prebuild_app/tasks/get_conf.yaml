@@ -1,0 +1,32 @@
+--- # Obtener credenciales desde un vault remoto
+- name: Establecer dominio y credenciales de Vault
+  include_vars:
+    file: /opt/vars/vault.yaml
+    name: vault
+
+- name: Realizar solicitud de credenciales para configuracion de aplicaciones
+  uri:
+    url: '{{ vault.VAULT_URL }}/app'
+    method: GET
+    headers:
+      X-Vault-Token: '{{ vault.VAULT_TOKEN }}'
+  register: response
+
+- name: creando archivo de configuracion en formato JSON
+  copy: content="{{ response.json.data }}" dest=/opt/vars/configfile.json
+
+- name: Instalar json-to-env para version de node 14
+  npm:
+    global: yes
+    name: json-to-env
+    state: present
+- name: Eliminando archivos temporales
+  file:
+    state: absent
+    path: /opt/vars/configfile.env
+- name: convertir json a archivo env
+  shell: json-to-env /opt/vars/configfile.json /opt/vars/configfile.env && \
+         sed 's/[^ ]* //' /opt/vars/configfile.env > /opt/vars/.env
+
+- name: limpiando archivo
+  shell: cat /opt/vars/.env | tr -d '"' > /opt/vars/envtemp && cat /opt/vars/envtemp > /opt/vars/.env && rm /opt/vars/envtemp

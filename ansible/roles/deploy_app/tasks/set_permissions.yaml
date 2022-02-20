@@ -1,0 +1,20 @@
+--- # Desplegar una app con nginx en Debian 10 - Buster
+
+- name: Cambiar el owner y group para el directorio de la app
+  file:
+    path: /var/www/{{ projectName }}
+    owner: minedu
+    group: minedu
+    recurse: yes
+
+- name: Cambiar el owner y group para archivos temporales
+  file:
+    path: /tmp
+    owner: minedu
+    group: minedu
+    recurse: yes
+
+- name: Reinicio de nginx
+  service:
+    name: nginx
+    state: restarted

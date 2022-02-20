@@ -1,0 +1,18 @@
+--- # Obtener credenciales desde un vault remoto
+- name: Establecer dominio y credenciales de Vault
+  include_vars:
+    file: /opt/vars/vault.yaml
+    name: vault
+
+- name: Realizar solicitud de credenciales para configuracion de cluster
+  uri:
+    url: '{{ vault.VAULT_URL }}/cluster'
+    method: GET
+    headers:
+      X-Vault-Token: '{{ vault.VAULT_TOKEN }}'
+  register: clusterHosts
+
+- name: Configurar el archivo de hosts para el despliegue
+  template:
+    src: hosts.j2
+    dest: /opt/ansible/hosts

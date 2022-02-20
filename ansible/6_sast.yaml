@@ -1,0 +1,14 @@
+--- # ejecucion de procesos SAST
+- hosts: localhost
+  become: yes
+  become_user: gitlab-runner
+  tasks:
+  - name: Ejecutar escaneo SNYK
+    import_role:
+      name: security
+      tasks_from: snyk
+
+  - name: Ejecutar escaneo Retire
+    import_role:
+      name: security
+      tasks_from: retire_js
